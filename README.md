@@ -1,33 +1,31 @@
-# MatchSphere 🌌
+# MatchSphere 🌷
 
-**Meet people who match your world.**
+**Meet People Who Match Your World.**
 
-A premium, responsive **18+ dating platform concept** featuring a neon-navy discovery sphere, community-first interest matching, fictional adult profiles, mutual-consent connection requests, demo conversations, and thoughtful safety UX.
+A premium, welcoming **18+ dating platform concept** built around shared passions, favorite teams, clear intentions and meaningful conversations.
 
-> **Prototype only.** Profiles, messages, member counts, compatibility scores, and events are fictional. Matching is local rule-based demo logic, not a live AI model. Age entry is self-attestation, **not verified age**. There is no production authentication, backend, realtime chat, identity verification, real moderation team, or real personal-data protection. **Do not collect real user information or launch as a dating service.**
+## Where to look
 
-## Explore
+- **Pastel landing page:** [index.html](index.html) + [landing.css](landing.css) + [landing.js](landing.js)
+- **Preserved standalone interactive demo:** [app/index.html](app/index.html)
+- **Brand guidelines:** [docs/brand-guidelines.md](docs/brand-guidelines.md)
+- **Design skill:** [.agents/skills/matchsphere-design/SKILL.md](.agents/skills/matchsphere-design/SKILL.md)
+- **Pastel design reference:** [.agents/skills/matchsphere-design/references/pastel-brand-system.md](.agents/skills/matchsphere-design/references/pastel-brand-system.md)
 
-Open [the website demo](index.html) locally, or after enabling GitHub Pages, open the published site. The root `index.html` is standalone and includes its styling, scripts and demo avatar images. The `src/` directory contains an editable, component-separated copy.
+Run locally with `python3 -m http.server 8000` and open `http://localhost:8000/`. The interactive demo is at `/app/`.
 
-**Features:** landing page; adult-only onboarding demonstration; match reasons and interest filters; F1, FC Barcelona, football, cricket, gaming, music and film communities; connection approval before demo messaging; demo profiles, safety controls, privacy options and free core plan.
+## Design
 
-## Design skill
+The new marketing site follows clean mobile-app showcase patterns and MatchSphere's own product voice: announcement bar; sticky navigation; large hero and app mockups; three-step process; bento features; reasons to choose; honest product-principle stats; explicitly fictional illustrative scenarios; interactive article carousel; final CTA; and newsletter placeholder.
 
-Coding agents: start with [`AGENTS.md`](AGENTS.md), then read [`.agents/skills/matchsphere-design/SKILL.md`](.agents/skills/matchsphere-design/SKILL.md). It draws on Apple-inspired clarity, accessible interface design, ethical dating UX, 3D motion restraint and dating psychology research. [`USING-THE-SKILL.md`](USING-THE-SKILL.md) explains how to use it.
+Palette: Seashell #f8edeb, Soft Blush #fae1dd, Soft Linen #ece4db, Powder Petal #ffe5d9, Almond Silk #fcd5ce, Alabaster Grey #e8e8e4, Alabaster Sage #d8e2dc, Powder Blush #fec5bb, Peach Glow #fec89a, Peach Fuzz #ffd7ba, and deep warm brown #382d2a text.
 
-Guiding concept: **Apple-inspired interaction quality + a futuristic 3D world + privacy and consent from the beginning.**
+Requested fonts Sailoors and Proxima Nova are not bundled. The page uses Playfair Display and Montserrat as available fallbacks until properly licensed font assets can be added.
 
-## Production launch blockers
+**The original in-app demo still has its older dark theme.** Its functionality was preserved, but the whole app has not yet been rethemed.
 
-Before accepting real users, implement a secure server, proper auth, independent 18+ verification, abuse prevention, server-enforced mutual messaging permission, moderation escalation, data deletion, rate limiting, and rigorous privacy compliance. See [`SECURITY.md`](SECURITY.md). Don't treat any frontend-only safety toggle as actual enforcement.
+## Honest feature boundaries
 
-## Research
+This is a **prototype, not a launched dating service**. Profiles, conversations, communities and scores are fictional demos or simulations. There is no live AI matching, independent age verification, secure backend, server-enforced chat consent, or operational moderation. The newsletter form does not send or store addresses. Do not collect real dating accounts or personal information until all production safety requirements have been implemented and audited.
 
-- [Attachment Project: Psychology of Dating Apps](https://www.attachmentproject.com/research/psychology-dating-apps-study/) — treat its survey findings as associations, not causal evidence.
-- [InAppStory: Psychology of Mobile App Design](https://medium.com/@inappstory/the-psychology-of-mobile-app-design-how-colors-fonts-and-layouts-impact-app-perfomance-9a2e0f39e1d9) — practical color, typography and layout guidance, not controlled performance proof.
-- [Apple Design Skill](https://github.com/dickwu/apple-design-skill) — reference for organizing human-centered design guidance; not an official Apple template.
-
-## License
-
-No open-source license has been selected. Contact the repository owner before reusing the code or assets.
+Reference layout inspiration: https://readable.framer.website/ — patterns only, not text or art.

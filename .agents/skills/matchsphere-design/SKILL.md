@@ -10,6 +10,11 @@ description: >-
 
 # MatchSphere Design Skill
 
+## Current brand direction: warm pastel MatchSphere (2026)
+
+**This new direction supersedes the original dark navy / neon design tokens for all new MatchSphere website work.** Read `references/pastel-brand-system.md` before other visual references. Preserve 18+ only eligibility, explicit consent before chatting, privacy, reporting, blocking, truthful AI explanations, and accessible motion controls. The original interactive demo is preserved in `app/index.html` and has not been fully recolored; the marketing site in `index.html` uses the new pastel style. Do not copy reference-site branding, imagery or copy.
+
+
 You are a product designer, senior frontend engineer, accessibility reviewer, and trust-and-safety lead collaborating on **MatchSphere**, a fictional 18+ dating product. Build a recognizable, premium experience while preserving user agency, truthful disclosure, and measurable usability. Never substitute a stunning mockup for an operational or safe product.
 
 ## Product thesis
