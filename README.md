@@ -12,7 +12,6 @@ MatchSphere is an **18+ iOS and Android dating app in development**. The website
 | `/mobile/` | Standalone React Native + Expo native **iOS/Android** fictional concept app with discover, communities, requests, simulated conversations, profile and safety | Local Expo development; NOT app-store released |
 | `/docs/` | Design, architecture, launch, policies | Documentation only |
 | `/.agents/skills/matchsphere-design/` | AI agent design skill for the website + native mobile product | Internal repo tooling |
-| `/.agents/skills/ponytail*/` | Imported MIT-licensed lean coding and review skills ([usage](docs/ponytail-integration.md)) | Agent instructions only |
 
 **No `/app/` browser route.** Old links to `/app/` redirect to the marketing homepage. The prior browser prototype has been removed from the deployment, but remains recoverable through Git history if needed.
 
@@ -47,7 +46,11 @@ Do not invite real daters, accept personal data, or publicly market the app as a
 
 - Seashell `#f8edeb` · Powder Blush `#fec5bb` · Peach Glow `#fec89a` · Dark text `#382d2a`.
 - Editorial, soft, calm marketing site; native compact, accessible controls in the mobile UI.
-- Sailoors / Proxima Nova style language; licensed fonts are **not** included. Website uses Playfair Display and Montserrat fallbacks; mobile uses system sans / serif.
+- Sailoors / Proxima Nova style language; licensed fonts are **not** included. Website uses Fraunces and Geist fallbacks; mobile uses system sans / serif.
 - See [`docs/brand-guidelines.md`](docs/brand-guidelines.md).
 
 This project has no open-source license specified. GitHub repository ownership does not imply redistribution permission.
+
+## Marketing design reference
+
+The marketing website draws on the calm editorial design language of [Leo Marlowe](https://leomarlowe.framer.website/) while retaining MatchSphere copy, brand colors and imagery. See [`docs/reference-style.md`](docs/reference-style.md) for the adaptation and testing notes. The native mobile app is unchanged.

@@ -25,8 +25,8 @@ Only use the ten requested pastel colors and deep warm-brown text:
 Body text must meet WCAG AA contrast with its actual surface. No white text on light peach/pink backgrounds. Keep shadows restrained and motion optional.
 
 ## Typography
-- Display: licensed **Sailoors** only if supplied, else Playfair Display / Georgia / serif.
-- Body UI: licensed **Proxima Nova** only if supplied, else Montserrat / system sans-serif.
+- Display: licensed **Sailoors** only if supplied, else Fraunces / Georgia / serif.
+- Body UI: licensed **Proxima Nova** only if supplied, else Geist / system sans-serif.
 - Marketing type scale: H1 72/40, H2 48/32, H3 24/20, body 18/16 desktop/mobile.
 - App uses platform-appropriate system fonts by default to preserve readability and speed.
 
@@ -38,3 +38,7 @@ Body text must meet WCAG AA contrast with its actual surface. No white text on l
 
 ## Content and safety
 Clear coming-soon status until real store links are verified. No fake signups or backend claims. App target audience is 18+, but server-verified eligibility, privacy protection, genuine consent before messaging and moderation must exist before a public dating release. Pricing cannot gate safety or essential messaging.
+
+## Editorial website direction (Leo Marlowe reference)
+
+See `docs/reference-style.md`. Use warm-paper editorial composition, large restrained display serif typography, rounded navigation, hairline dividers, minimal handcrafted motion, and a compact interactive app-preview dock. Keep MatchSphere content and visuals original and do not introduce dating functionality to the marketing site.
