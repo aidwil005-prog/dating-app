@@ -1,0 +1,22 @@
+name: Validate static MatchSphere demo
+on:
+  push:
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check demo pages and documentation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('.')
+          html=(root/'index.html').read_text()
+          assert '<!doctype html>' in html.lower()
+          assert 'MatchSphere' in html
+          assert '18+' in html
+          assert (root/'.agents/skills/matchsphere-design/SKILL.md').is_file()
+          assert (root/'SECURITY.md').is_file()
+          print('Static smoke checks passed')
+          PY
