@@ -9,3 +9,7 @@
 5. Prioritize consent, age assurance, blocking, safety, high contrast, and mobile accessibility. Essential messaging and safety tools will be free.
 6. Read `.agents/skills/matchsphere-design/SKILL.md`; use its visual principles while obeying this mobile-only architecture decision.
 7. Do not bundle unlicensed fonts or use actual user photographs in demo screens.
+
+## Ponytail coding practices
+
+For implementation and code review, read `.agents/skills/ponytail/SKILL.md` and use the smallest **complete** change. Optional audits: `ponytail-review`, `ponytail-audit`, `ponytail-debt`, `ponytail-gain`, and `ponytail-help` in `.agents/skills/`. See `docs/ponytail-integration.md`. MatchSphere's mobile-only architecture, adult-only access, consent, privacy, safety, and accessibility rules above **always take precedence**. No hooks or executables are installed here.

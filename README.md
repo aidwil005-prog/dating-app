@@ -12,6 +12,7 @@ MatchSphere is an **18+ iOS and Android dating app in development**. The website
 | `/mobile/` | Standalone React Native + Expo native **iOS/Android** fictional concept app with discover, communities, requests, simulated conversations, profile and safety | Local Expo development; NOT app-store released |
 | `/docs/` | Design, architecture, launch, policies | Documentation only |
 | `/.agents/skills/matchsphere-design/` | AI agent design skill for the website + native mobile product | Internal repo tooling |
+| `/.agents/skills/ponytail*/` | Imported MIT-licensed lean coding and review skills ([usage](docs/ponytail-integration.md)) | Agent instructions only |
 
 **No `/app/` browser route.** Old links to `/app/` redirect to the marketing homepage. The prior browser prototype has been removed from the deployment, but remains recoverable through Git history if needed.
 
