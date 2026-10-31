@@ -22,6 +22,10 @@ jobs:
           assert not (root/'app').exists(), 'Old browser dating app must not ship'
           assert 'newsletter-form' not in html, 'Do not collect pretend waitlist emails'
           assert 'Coming soon' in html
+          assert 'class="hero-portrait paper-reveal"' in html
+          assert 'aria-pressed="false"' in html
+          assert 'prefers-reduced-motion:reduce' in (root/'landing.css').read_text()
+          assert "setFolded" in (root/'landing.js').read_text()
           js=(root/'landing.js').read_text()
           assert 'newsletter-form' not in js
           assert all((root/'assets'/f'{name}.svg').is_file() for name in ['maya','aarav'])

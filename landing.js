@@ -107,3 +107,24 @@ if (!reducedMotion && 'IntersectionObserver' in window && window.innerWidth > 10
   }, {threshold: 0.12});
   targets.forEach(element => observer.observe(element));
 }
+// Paper reveal: open automatically in view, then let touch, mouse and keyboard toggle it.
+const paper = document.querySelector('.paper-reveal');
+if (paper) {
+  const paperMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const setFolded = folded => {
+    paper.classList.toggle('is-folded', folded);
+    paper.setAttribute('aria-pressed', String(folded));
+    paper.setAttribute('aria-label', folded ? 'Unfold the illustrated portrait' : 'Fold the illustrated portrait into a paper ball');
+  };
+  if (paperMotion && 'IntersectionObserver' in window) {
+    setFolded(true);
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        observer.disconnect();
+        setTimeout(() => setFolded(false), 420);
+      }
+    }, {threshold: 0.25});
+    observer.observe(paper);
+  }
+  paper.addEventListener('click', () => setFolded(!paper.classList.contains('is-folded')));
+}
