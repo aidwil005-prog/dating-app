@@ -1,11 +1,7 @@
-# Using the design skill in this repository
+# Using the MatchSphere design skill
 
-1. Open the repository in Codex or an AI coding environment that reads `AGENTS.md`.
-2. The agent should read `.agents/skills/matchsphere-design/SKILL.md` and the required linked references before making UI changes.
-3. For Cursor, `.cursorrules` points to the same guidance; for Claude Code, optionally copy `.agents/skills/matchsphere-design` into `.claude/skills/matchsphere-design` if needed.
-4. Run `python3 -m http.server 8080` to preview the prototype on your own computer.
-5. Run `python3 -m unittest discover -s tests -v` and the design heuristic scanner before proposing merges.
+Start with `AGENTS.md`, then `.agents/skills/matchsphere-design/SKILL.md`, followed by `docs/product-boundary.md` and `docs/brand-guidelines.md`.
 
-**Example:** “Use `matchsphere-design` to revise the match cards based on dating psychology research. Preserve 18+ eligibility messaging, no unsolicited messaging, transparent sample scores, keyboard accessibility and reduced motion.”
+The current product consists of two **different outputs**: a marketing-only pastel website and a native Expo iOS/Android application. No web dating app. When asked to change the app, modify `mobile/`; when asked to change the website, modify root `index.html`, `landing.css`, and `landing.js`.
 
-**Reality check:** No real account verification, secure server, age assurance, real AI, real-time messaging or moderation backend is implemented here.
+Keep realistic safety requirements separate from fake/demo controls and tell reviewers what was actually tested. Follow the provided branding, avoid manipulative retention tricks and fake claims, and use accessible native interactions rather than copying a web layout into phone screens.

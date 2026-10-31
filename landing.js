@@ -72,8 +72,3 @@ document.querySelectorAll('[data-article]').forEach(button=>button.addEventListe
 dialog.querySelector('.dialog-close').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
 dialog.addEventListener('close',()=>lastArticleButton?.focus());
-document.querySelector('#newsletter-form').addEventListener('submit',event=>{
-  event.preventDefault();
-  document.querySelector('#newsletter-status').textContent='Newsletter registration is not live yet. Your email was not collected, saved or sent.';
-  event.currentTarget.reset();
-});

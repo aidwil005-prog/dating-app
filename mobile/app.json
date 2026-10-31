@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "MatchSphere",
+    "slug": "matchsphere",
+    "scheme": "matchsphere",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.matchsphere.mobile"
+    },
+    "android": {
+      "package": "com.matchsphere.mobile"
+    },
+    "extra": {
+      "appMode": "fictional-demo-no-backend"
+    }
+  }
+}

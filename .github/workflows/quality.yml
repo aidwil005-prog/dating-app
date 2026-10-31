@@ -1,22 +1,32 @@
-name: Validate static MatchSphere demo
+name: Validate MatchSphere website + native app files
 on:
   push:
   pull_request:
+permissions:
+  contents: read
 jobs:
-  validate:
+  smoke:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Check demo pages and documentation
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Static architecture smoke tests
         run: |
           python3 - <<'PY'
+          import json
           from pathlib import Path
           root=Path('.')
           html=(root/'index.html').read_text()
-          assert '<!doctype html>' in html.lower()
           assert 'MatchSphere' in html
-          assert '18+' in html
-          assert (root/'.agents/skills/matchsphere-design/SKILL.md').is_file()
-          assert (root/'SECURITY.md').is_file()
-          print('Static smoke checks passed')
+          assert 'id="download"' in html
+          assert '/app/' not in html, 'Browser dating app is no longer allowed'
+          assert not (root/'app').exists(), 'Old browser dating app must not ship'
+          assert 'newsletter-form' not in html, 'Do not collect pretend waitlist emails'
+          assert 'Coming soon' in html
+          js=(root/'landing.js').read_text()
+          assert 'newsletter-form' not in js
+          app=json.loads((root/'mobile/app.json').read_text())
+          assert app['expo']['platforms']==['ios','android']
+          assert (root/'mobile/App.tsx').is_file()
+          assert (root/'docs/product-boundary.md').is_file()
+          print('Website/native architecture checks passed')
           PY

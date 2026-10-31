@@ -1,8 +1,11 @@
-# MatchSphere agent instructions
+# MatchSphere contributor instructions
 
-1. Read `.agents/skills/matchsphere-design/SKILL.md` and required reference files before changes to product design or interactions.
-2. Keep the project an honest **18+ demo** until independent age assurance, authentication, backend-enforced connection consent, secure messaging, real moderation and privacy enforcement are implemented.
-3. Never introduce real profiles or sensitive identity information into test fixtures; all eight samples are fictional adults.
-4. Preserve accessible non-3D actions, reduced-motion behavior, and responsive usability.
-5. Read `docs/design-research.md`, `docs/architecture.md`, and `docs/launch-checklist.md` when designing engagement or production-facing features.
-6. Run `python3 -m unittest discover -s tests -v`, `node --check app.js` (if available), and the heuristic scan, then disclose what was and wasn't tested.
+**Product decision:** MatchSphere dating is iOS/Android native **only**. The repository root is a **public marketing-only website**. Do not create or restore a browser dating app at `/app/`.
+
+1. Review `docs/product-boundary.md`, `docs/brand-guidelines.md` and `docs/launch-checklist.md` before implementing new flows.
+2. For marketing changes edit `index.html`, `landing.css`, `landing.js`; CTA may point to a site section or verified store URLs only. Never claim the app is already on stores when it is not.
+3. For dating app UI changes edit `mobile/App.tsx` and associated Expo files, targeting iOS and Android (no web target).
+4. All demo users/conversations are invented and all demo state is local; do not claim independent 18+ verification, moderation, AI matching, authentication or privacy controls exist operationally.
+5. Prioritize consent, age assurance, blocking, safety, high contrast, and mobile accessibility. Essential messaging and safety tools will be free.
+6. Read `.agents/skills/matchsphere-design/SKILL.md`; use its visual principles while obeying this mobile-only architecture decision.
+7. Do not bundle unlicensed fonts or use actual user photographs in demo screens.

@@ -327,3 +327,12 @@ p {color:var(--text-secondary)}
   html {scroll-behavior:auto!important}*,*::before,*::after {animation:none!important;transition:none!important}
   .reveal {opacity:1!important;transform:none!important}
 }
+
+/* Native-app-only release messaging. No browser dating signup is offered. */
+.store-availability{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px auto 6px}
+.store-pill{display:flex;align-items:center;gap:8px;border:1px solid #d9c7bf;background:#fff8f2;color:#382d2a;border-radius:999px;padding:10px 17px;font-size:13px;font-weight:700;line-height:1.4}
+.store-pill b{font-weight:600;color:#65554e}
+.launch-status{width:min(100%,410px);padding:22px;border:1px solid #e8e8e4;background:#ffe5d9;border-radius:24px;color:#382d2a}
+.launch-status strong{font-size:18px}.launch-status p{font-size:14px;line-height:1.65;max-width:35ch;margin:8px 0 15px}
+.launch-status .button{display:inline-flex;min-height:44px}
+@media(max-width:600px){.store-pill{font-size:12px;padding:10px 12px}.store-availability{gap:7px}.launch-status{padding:18px}}
