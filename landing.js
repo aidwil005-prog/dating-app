@@ -107,6 +107,7 @@ if (!reducedMotion && 'IntersectionObserver' in window && window.innerWidth > 10
   }, {threshold: 0.12});
   targets.forEach(element => observer.observe(element));
 }
+
 // Paper reveal: open automatically in view, then let touch, mouse and keyboard toggle it.
 const paper = document.querySelector('.paper-reveal');
 if (paper) {
@@ -127,4 +128,129 @@ if (paper) {
     observer.observe(paper);
   }
   paper.addEventListener('click', () => setFolded(!paper.classList.contains('is-folded')));
+}
+
+
+// No Framer runtime: native, dependency-free adaptations of the seven requested effects.
+const header = document.querySelector('.site-header');
+const siteLinks = [...document.querySelectorAll('.site-nav a[href^="#"]')];
+let headerPending = false;
+window.addEventListener('scroll', () => {
+  if (headerPending) return;
+  headerPending = true;
+  requestAnimationFrame(() => { header.classList.toggle('is-scrolled', window.scrollY > 20); headerPending = false; });
+}, {passive:true});
+header.classList.toggle('is-scrolled', window.scrollY > 20);
+const observedSections=[...document.querySelectorAll('section[id]')];
+function syncCurrentNav(){
+  const threshold=window.innerHeight*.28+header.offsetHeight;
+  let current='';
+  for(const section of observedSections){
+    if(section.getBoundingClientRect().top<=threshold) current=section.id;
+  }
+  for(const link of siteLinks){
+    if(link.getAttribute('href')==='#'+current) link.setAttribute('aria-current','location');
+    else link.removeAttribute('aria-current');
+  }
+}
+window.addEventListener('scroll',syncCurrentNav,{passive:true});
+window.addEventListener('resize',syncCurrentNav);
+syncCurrentNav();
+
+// Animated phrase has a stable, descriptive screen-reader label in the HTML.
+const typingPhrase = document.querySelector('#typing-phrase');
+if (typingPhrase && !reducedMotion) {
+  const phrases = ['the last lap.', 'one more song.', 'movie nights.', 'the same team.'];
+  let phraseIndex=0, count=phrases[0].length, deleting=true;
+  function typeTick() {
+    const current=phrases[phraseIndex];
+    if (deleting) count--;
+    else count++;
+    typingPhrase.textContent=current.slice(0,count);
+    if (count===0) { phraseIndex=(phraseIndex+1)%phrases.length; deleting=false; }
+    else if (count===phrases[phraseIndex].length && !deleting) deleting=true;
+    const duration = count===0 ? 250 : count===phrases[phraseIndex].length ? 1950 : deleting ? 55 : 100;
+    setTimeout(typeTick,duration);
+  }
+  setTimeout(typeTick,2600);
+}
+
+// Tiny one-time intro: hidden by default and never delays the page's content.
+const intro=document.querySelector('#brand-intro');
+if (intro && !reducedMotion) {
+  let seen=true;
+  try { seen=sessionStorage.getItem('matchsphere-intro-seen')==='1'; sessionStorage.setItem('matchsphere-intro-seen','1'); } catch { /* private mode: skip intro */ }
+  if (!seen) {
+    intro.hidden=false;
+    setTimeout(()=>intro.classList.add('is-leaving'),650);
+    setTimeout(()=>{intro.hidden=true;},1050);
+  }
+}
+
+// Folders reveal semantic content. Without JS, the cards' text stays visible.
+const folderButtons=[...document.querySelectorAll('.folder-toggle')];
+if (folderButtons.length) {
+  document.documentElement.classList.add('folder-ready');
+  folderButtons.forEach(button=>{button.setAttribute('aria-expanded','false');button.addEventListener('click',()=>{
+    const open=button.getAttribute('aria-expanded')==='true';
+    button.setAttribute('aria-expanded',String(!open));
+    const hint=button.querySelector('.folder-hint');
+    hint.textContent=open?'OPEN FOLDER ↗':'CLOSE FOLDER ↖';
+  });});
+}
+
+const albumPages=[...document.querySelectorAll('.album-page')];
+const albumPrev=document.querySelector('#album-prev');
+const albumNext=document.querySelector('#album-next');
+let pageIndex=0;
+function showAlbumPage(index) {
+  pageIndex=Math.max(0,Math.min(albumPages.length-1,index));
+  albumPages.forEach((page,i)=>{ page.hidden=i!==pageIndex; page.classList.toggle('is-current',i===pageIndex); });
+  document.querySelector('#album-count').textContent=String(pageIndex+1).padStart(2,'0')+' / '+String(albumPages.length).padStart(2,'0');
+  albumPrev.disabled=pageIndex===0;
+  albumNext.disabled=pageIndex===albumPages.length-1;
+}
+if(albumPages.length && albumPrev && albumNext){
+  albumPrev.hidden=false;albumNext.hidden=false;
+  document.documentElement.classList.add('album-ready');
+  albumPrev.addEventListener('click',()=>showAlbumPage(pageIndex-1));
+  albumNext.addEventListener('click',()=>showAlbumPage(pageIndex+1));
+  showAlbumPage(0);
+}
+
+const reel=document.querySelector('#reel');
+const reelPrev=document.querySelector('#reel-prev');
+const reelNext=document.querySelector('#reel-next');
+if(reel && reelPrev && reelNext) {
+  const cards=[...reel.querySelectorAll('.reel-card')];
+  reelPrev.hidden=false;reelNext.hidden=false;
+  if(!reducedMotion) reel.classList.add('reel-ready');
+  let pending=false;
+  function paintReel(){
+    pending=false;
+    const mid=reel.getBoundingClientRect().left+reel.clientWidth/2;
+    const width=reel.clientWidth;
+    cards.forEach(card=>{
+      const rect=card.getBoundingClientRect();
+      const offset=Math.max(-1,Math.min(1,(rect.left+rect.width/2-mid)/(width*.68)));
+      card.style.setProperty('--bend-y',Math.round(Math.abs(offset)*27)+'px');
+      card.style.setProperty('--bend-rotate',(-offset*12).toFixed(1)+'deg');
+      card.style.setProperty('--bend-scale',(1-Math.abs(offset)*.075).toFixed(3));
+    });
+    reelPrev.disabled=reel.scrollLeft<=3;
+    reelNext.disabled=reel.scrollLeft+reel.clientWidth>=reel.scrollWidth-3;
+  }
+  function requestPaint(){if(!pending){pending=true;requestAnimationFrame(paintReel);}}
+  function shift(direction){
+    const step=cards[0].getBoundingClientRect().width+17;
+    reel.scrollBy({left:direction*step,behavior:reducedMotion?'instant':'smooth'});
+  }
+  reelPrev.addEventListener('click',()=>shift(-1));reelNext.addEventListener('click',()=>shift(1));
+  reel.addEventListener('scroll',requestPaint,{passive:true});window.addEventListener('resize',requestPaint);
+  reel.addEventListener('keydown',event=>{
+    if(event.key==='ArrowRight'||event.key==='ArrowLeft'){
+      event.preventDefault();shift(event.key==='ArrowRight'?1:-1);
+    }
+  });
+  paintReel();
 }

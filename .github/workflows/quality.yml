@@ -26,6 +26,14 @@ jobs:
           assert 'aria-pressed="false"' in html
           assert 'prefers-reduced-motion:reduce' in (root/'landing.css').read_text()
           assert "setFolded" in (root/'landing.js').read_text()
+          assert 'id="moments"' in html
+          assert all(f'id="folder-{x}"' in html for x in ['f1','music','film'])
+          assert 'id="album-spread"' in html and 'id="reel"' in html
+          assert 'id="typing-phrase"' in html and 'id="brand-intro"' in html
+          assert 'button-glass' in html and 'aria-expanded' in html
+          assert 'showAlbumPage' in (root/'landing.js').read_text()
+          assert 'paintReel' in (root/'landing.js').read_text()
+          assert 'prefers-reduced-motion:reduce' in (root/'landing.css').read_text()
           js=(root/'landing.js').read_text()
           assert 'newsletter-form' not in js
           assert all((root/'assets'/f'{name}.svg').is_file() for name in ['maya','aarav'])
