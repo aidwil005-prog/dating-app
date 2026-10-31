@@ -39,6 +39,10 @@ jobs:
           assert all((root/'assets'/f'{name}.svg').is_file() for name in ['maya','aarav'])
           assert all(f'data-preview="{name}"' in html for name in ['discover','communities','messages'])
           assert 'dialog-title' in html and 'dialog.showModal()' in js
+          assert 'polaroid-deck' in html and 'Shuffle the moments' in html
+          assert 'connection-journey' in html and 'connection-ink' in html
+          assert 'coral-motif' in html and 'footer-glass-shell' in html
+          assert 'prefers-reduced-motion:reduce' in (root/'landing.css').read_text()
           assert 'setMenu(false)' in js and 'menuButton.focus()' in js
           app=json.loads((root/'mobile/app.json').read_text())
           assert app['expo']['platforms']==['ios','android']

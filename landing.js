@@ -254,3 +254,36 @@ if(reel && reelPrev && reelNext) {
   });
   paintReel();
 }
+
+
+const polaroidDeck=document.querySelector('#polaroid-deck');
+const shuffleButton=document.querySelector('.polaroid-shuffle');
+if(polaroidDeck && shuffleButton){
+  polaroidDeck.classList.add('is-enhanced');
+  shuffleButton.addEventListener('click',()=>{
+    polaroidDeck.append(polaroidDeck.firstElementChild);
+    const top=polaroidDeck.firstElementChild.querySelector('figcaption').childNodes[0].textContent.trim();
+    document.querySelector('#polaroid-status').textContent='On top: '+top;
+  });
+}
+const journey=document.querySelector('.connection-journey');
+if(journey && !reducedMotion && 'IntersectionObserver' in window){
+  journey.classList.add('is-animating');
+  const pathObserver=new IntersectionObserver(entries=>{
+    if(entries.some(e=>e.isIntersecting)){journey.classList.add('is-drawn');pathObserver.disconnect();}
+  },{threshold:.15});
+  pathObserver.observe(journey);
+}
+const launchPanel=document.querySelector('.launch-panel');
+if(launchPanel && !reducedMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  launchPanel.addEventListener('pointermove',event=>{
+    const rect=launchPanel.getBoundingClientRect();
+    const x=(event.clientX-rect.left)/rect.width-.5;
+    const y=(event.clientY-rect.top)/rect.height-.5;
+    launchPanel.style.setProperty('--coral-x',(x*16).toFixed(1)+'px');
+    launchPanel.style.setProperty('--coral-y',(y*12).toFixed(1)+'px');
+  },{passive:true});
+  launchPanel.addEventListener('pointerleave',()=>{
+    launchPanel.style.removeProperty('--coral-x');launchPanel.style.removeProperty('--coral-y');
+  });
+}
