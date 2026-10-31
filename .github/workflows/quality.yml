@@ -23,6 +23,10 @@ jobs:
           assert 'newsletter-form' not in html, 'Do not collect pretend waitlist emails'
           assert 'Coming soon' in html
           js=(root/'landing.js').read_text()
+          css=(root/'landing.css').read_text()
+          assert '.js-motion .reveal {' in css, 'Scroll effects must not hide content when JS fails'
+          assert 'marquee-ready' in js, 'Marquee should be enhanced only after duplicate cards are ready'
+          assert "menuToggle.focus()" in js, 'Escape should restore mobile navigation focus'
           assert 'newsletter-form' not in js
           app=json.loads((root/'mobile/app.json').read_text())
           assert app['expo']['platforms']==['ios','android']

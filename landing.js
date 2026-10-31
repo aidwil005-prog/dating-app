@@ -10,15 +10,25 @@ function setMenu(open){
 }
 menuToggle.addEventListener('click',()=>setMenu(menuToggle.getAttribute('aria-expanded')!=='true'));
 mobileMenu.addEventListener('click',event=>{if(event.target.closest('a'))setMenu(false)});
-window.addEventListener('keydown',event=>{if(event.key==='Escape')setMenu(false)});
+window.addEventListener('keydown',event=>{if(event.key==='Escape'&&menuToggle.getAttribute('aria-expanded')==='true'){setMenu(false);menuToggle.focus()}});
 window.matchMedia('(min-width:801px)').addEventListener('change',event=>{if(event.matches)setMenu(false)});
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if('IntersectionObserver' in window&&!reducedMotion){
+  document.documentElement.classList.add('js-motion');
   const observer=new IntersectionObserver((entries)=>{
     for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(element=>observer.observe(element));
 }else document.querySelectorAll('.reveal').forEach(element=>element.classList.add('visible'));
+// Complete the duplicate set so the testimonial loop is seamless at every width.
+const marquee=document.querySelector('.marquee-track');
+if(marquee){
+  marquee.querySelectorAll('.quote-card[aria-hidden]').forEach(card=>card.remove());
+  marquee.querySelectorAll('.quote-card').forEach(card=>{
+    const copy=card.cloneNode(true);copy.setAttribute('aria-hidden','true');marquee.append(copy);
+  });
+  document.documentElement.classList.add('marquee-ready');
+}
 const carousel=document.querySelector('#article-carousel');
 const previous=document.querySelector('#blog-prev');
 const next=document.querySelector('#blog-next');
