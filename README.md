@@ -54,3 +54,7 @@ This project has no open-source license specified. GitHub repository ownership d
 ## Marketing design reference
 
 The marketing website draws on the calm editorial design language of [Leo Marlowe](https://leomarlowe.framer.website/) while retaining MatchSphere copy, brand colors and imagery. See [`docs/reference-style.md`](docs/reference-style.md) for the adaptation and testing notes. The native mobile app is unchanged.
+
+## Impeccable quality guidance
+
+This repository includes the [Impeccable](https://github.com/pbakaus/impeccable) **Markdown skill and design playbooks**, pinned and attributed under `.agents/skills/impeccable/`. New contributors should read [`PRODUCT.md`](PRODUCT.md), [`DESIGN.md`](DESIGN.md), and [`docs/impeccable-integration.md`](docs/impeccable-integration.md). This does not install the executable Impeccable CLI, hooks, or a global agent plugin; for that, follow the upstream install instructions in a trusted local checkout.

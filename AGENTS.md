@@ -13,3 +13,7 @@
 ## Ponytail coding practices
 
 For implementation and code review, read `.agents/skills/ponytail/SKILL.md` and use the smallest **complete** change. Optional audits: `ponytail-review`, `ponytail-audit`, `ponytail-debt`, `ponytail-gain`, and `ponytail-help` in `.agents/skills/`. See `docs/ponytail-integration.md`. MatchSphere's mobile-only architecture, adult-only access, consent, privacy, safety, and accessibility rules above **always take precedence**. No hooks or executables are installed here.
+
+## Impeccable design quality
+
+For marketing website interface changes, read `PRODUCT.md`, `DESIGN.md`, `.agents/skills/impeccable/SKILL.md`, and the relevant `reference/*.md` playbook (especially `polish`, `adapt`, `clarify` and `craft-floor`). MatchSphere's existing editorial direction and iOS/Android-only product boundary override generic design suggestions. Impeccable here is **instruction-only**: no executable launcher, design-detector hooks, or CLI are installed. Review `docs/impeccable-integration.md` before using host-specific commands. Verify the real page at desktop and mobile sizes, keyboard interaction, reduced-motion and no-JavaScript fallbacks.
